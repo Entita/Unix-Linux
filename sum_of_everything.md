@@ -629,6 +629,97 @@ Konvertuje nebo smaže znaky.
     // Nahradí více mezer jdoucí po sobě jednou
     echo "Can you                 see how tr          command can be wonderful?" | tr -s " "
     
+# Program grep
+
+– filtruje řádky vstupu odpovídající zadanému vzoru
+
+– ve vzoru mohou být využity konstrukty rozšířených regulárních výrazů
+
+– vytvořil ho Ken Thompson v roce 1974
+
+Nejdůležitější přepínače
+
+– zadaný vzor odpovídá celému slovu (přepínač -w)
+
+– rekurzivní prohledávání adresářů (přepínač -r)
+
+– výpis doplněn o čísla řádků (přepínač -n)
+
+– výpis počtu řádků odpovídajících vzoru (přepínač -c)
+
+– ignorování velikosti písmen (přepínač -i)
+
+– použití zjednodušeného rozšířených možností „regulárních výrazů“ (přepínač -E)
+
+# Regulární výrazy v programu grep
+
+– 1 libovolný znak (znak . ve vzoru)
+
+– nepovinný výskyt znaku (\? za daným znakem)
+
+– libovolný (i nulový) počet opakování znaku (* za daným znakem)
+
+– nenulový počet opakování znaku (\+ za daným znakem)
+
+– přesně daný počet opakování (\{počet\} za daným znakem)
+
+– počet opakování v daném rozsahu (\{od, do\} za daným znakem)
+
+– alespoň daný počet opakování (\{od, \} za daným znakem)
+
+– libovolný znak z množiny ([výčet] nebo [od-do])
+
+– libovolný znak mimo množinu ([ˆvýčet] nebo [ˆod-do])
+
+– lze použít i mnoho předdefinovaných skupin znaků (např. [:alpha:])
+
+– definování alternativ pomocí logického spojky „nebo“ (znaky \|)
+
+– možnost pracovat se začátky řádků (znak ˆ )
+
+– možnost pracovat s konci řádků (znak $)
+
+– seskupování znaků pro potřeby výše zmíněných operací pomocí \( a \)
+
+Příklady použití
+
+– Výběr řádků obsahujících řetězec
+
+grep kuhrtoma /etc/passwd
+
+ls -l ~/. | grep "Feb 22"
+
+
+– Hledání řádků obsahujících vzor jako celé slovo
+
+ps aux | grep -w "ps"
+
+
+– Vypsání pouze počtu řádku
+
+ps aux | grep -cw "ps"
+
+
+– Hledání řádků se vzorem na začátku
+
+ls -l ~/zalohy/. | grep "^total"
+
+
+– Hledání řádků končících číslicí 0 až 4
+
+grep "[0-4]$" books.txt
+
+
+– Hledání řádků končících 2 nebo 3 číslicemi
+
+grep -E " [[:digit:]]{2,3}$" books.txt
+
+
+– Hledání řádků obsahujících „process“ nebo „file“
+
+grep -E ’Martin|Tolkien’ books.txt
+
+    
 # Basics
 man -> manuálová stránka
 
