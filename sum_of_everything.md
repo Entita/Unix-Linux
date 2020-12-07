@@ -231,9 +231,185 @@
     // 5	r-x
     // 6	rw-
     // 7	rwx
+# Výpis a ukončení procesů
+
+# Výpis procesů
 
     michal@virtual ~ $ chmod 721 soubor.txt
     michal@virtual ~ $ chmod 711 public_html
+
+    // UNIX přepínače, -e
+    // BSD přepínače, aux
+
+    // Vypíše procesy které ovládá terminál
+    michal@virtual ~ $ ps
+
+    // Vypíše procesy vlastněné uživatelem
+    michal@virtual ~ $ ps x
+
+    // Procesy vlastněné uživatelem hajny
+    michal@virtual ~ $ ps -u hajny
+
+    // Procesy vlastněné uživatelem hajny se zobrazenými sloupci pid, s, cmd
+    michal@virtual ~ $ ps -u hajny -o pid,s,cmd
+
+    // Vypíše všechny procesy
+    michal@virtual ~ $ ps ax/ps -e
+
+    // Všechny procesy v užitelsky přívětivém formátu
+    michal@virtual ~ $ ps aux/ps -ef/ps -eF ()
+
+    // Vypíše všechny procesy ve stromové struktuře
+    michal@virtual ~ $ ps auxf/ps -efH
+
+    // Vypíše jen určité sloupce
+    michal@virtual ~ $ ps axo pid
+    michal@virtual ~ $ ps -eo pid
+
+    // Vypíše proces na základě jména
+    michal@virtual ~ $ ps -C bash
+
+    // Vypíše strom procesu
+    michal@virtual ~ $ pstree
+
+    // Vypíše strom společně s argumenty
+    michal@virtual ~ $ pstree -a
+
+    // Vypíše strom společně s PID
+    michal@virtual ~ $ pstree -p
+    
+
+# Ukončení procesu
+    
+
+    // Spustíme libovolný program
+    michal@virtual ~ $ gedit
+
+    // Získáme PID
+    michal@virtual ~ $ ps x
+
+    // Ukončí aplikaci
+    michal@virtual ~ $ kill pid (TERM)
+
+    // Znovu spustíme aplikaci gedit
+    michal@virtual ~ $ gedit
+
+    // Zastaví aplikaci
+    michal@virtual ~ $ kill -STOP pid
+
+    // Probudí aplikaci
+    michal@virtual ~ $ kill -CONT pid
+
+    // Ukončí proces okamžitě
+    michal@virtual ~ $ kill -KILL pid
+
+    // Seznam všech signálů
+    michal@virtual ~ $ kill -l
+
+    // Znovu spustíme aplikaci gedit
+    michal@virtual ~ $ gedit
+
+    // Ukončí všechny instance programu gedit
+    michal@virtual ~ $ killall gedit
+
+    // Ukončí terminál i se všemi potomky
+    michal@virtual ~ $ kill -KILL pid_terminalu
+    
+
+# Řízení úloh
+    
+
+    // Spuštění úlohy na pozadí
+    michal@virtual ~ $ gnome-calculator &
+    [1] 4468
+
+    // Vypíše bežící procesy
+    michal@virtual ~ $ jobs
+    [1]+  Running                 gnome-calculator &
+
+    // Vypíše běžící procesy společně s PID
+    michal@virtual ~ $ jobs -l
+    [1]+  4468 Running                 gnome-calculator &
+
+    // Spustíme program gucharmap
+    michal@virtual ~ $ gucharmap
+
+    // Pomocí Ctrl + z jej zastavíme
+    ^Z
+    [2]+  Stopped                 gucharmap
+
+    // Přenesení na pozadí
+    michal@virtual ~ $ bg
+    [2]+ gucharmap &
+
+    // Přenesení posledního programu na popředí
+    michal@virtual ~ $ fg
+    gucharmap
+
+    // Přeneseme gucharmap na pozadí
+    // Přeneseme gnome-calculator na popředí
+    michal@virtual ~ $ fg 1
+    gnome-calculator
+
+    // Pomocí Ctrl + c ukončíme gnome-calculator
+    // Pomocí Ctrl + d ukončíme terminál a gucharmap stále běží
+    
+
+# Expanze jmen souborů a adresářů
+    
+
+    michal@virtual ~ $ echo ~
+    /home/michal
+
+    michal@virtual ~ $ echo *
+    Desktop Documents Downloads fontconfig Music passwords
+    Pictures pokusy Public public_html Templates Videos
+
+    michal@virtual ~ $ echo p*
+    passwords pokusy public_html
+
+    michal@virtual ~ $ ls p*
+    passwords
+
+    pokusy:
+    soubor.txt  text.txt
+
+    public_html:
+    index.html
+
+    michal@virtual ~ $ echo pokus?
+    pokusy
+
+    michal@virtual ~ $ echo p[a-o]*
+    passwords pokusy
+
+    michal@virtual ~ $ echo \*
+    *
+
+    michal@virtual ~ $ echo '*'
+    *
+
+    michal@virtual ~ $ echo "*"
+    *
+
+    michal@virtual ~ $ echo \'
+    '
+
+    michal@virtual ~ $ echo \\
+    \
+
+    michal@virtual ~ $ echo &
+    [1] 8389
+
+    michal@virtual ~ $ echo \&
+    &
+
+    michal@virtual ~ $ echo    a
+    a
+
+    michal@virtual ~ $ echo '   a'
+       a
+
     
 # Basics
 man -> manuálová stránka
@@ -241,6 +417,7 @@ man -> manuálová stránka
 pwd -> vytiskne adresář, ve kterém se nacházíš
 
 touch -> vytvoření souboru
+
 cat -> umožńuje vytvořit soubor, nebo vytiskne obsah souboru na standartní výstup (čtení)
 
 rmdir -> maže adresáře (musí být prázdné)
@@ -249,7 +426,11 @@ rm -r -> smaže i adresáře, ve kterých něco je
 
 mv - přesouvání a přejmenování zároveň
 
-ctrl + d -> ukončení procesu
+ctrl + d -> ukončení procesu (nebo zadávání například pokud tvoříte soubor pomcí cat)
+
+ctrl + alt + číslo -> přepínání mezi konzolami, pokud používáte grafické rozhraní
+
+alt + číslo -> přepínání mezi konzolami, pokud nepoužíváte grafické rozhraní
 
 ctrl + c -> ukončení procesu
 
@@ -260,5 +441,19 @@ ps -> status procesů (má několik přepínačů)
 ps -ef -> úplný výpis statusu všech procesů (má několik přepínačů)
 
 ls -> výpis obsahu adresáře (má několik přepínačů)
+
+whereis -> zjištění odkud se program spuští (má několik parametrů)
+
+ctrl + w -> dojde ke smazání slova při špatně napsaném příkazu
+
+ctrl + u -> dojde ke smazání řádku při špatně napsaném příkazu
+
+man - a -> zaborazení všech manuálových stránek k nějákému příkazu, který napíšeš jako parametr
+
+příkazy, které nemají manuálové stránky na ty se díváme pomocí "info"
+
+echo "čau"-> vypsání textu na standartní výstup konzole
+
+echo "čau" | pokus.txt -> vypsání textu do souboru
 
 
