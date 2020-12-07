@@ -1051,7 +1051,7 @@ sed -n ’/Alchemist/,+2 p’ books.txt
 
 – seskupování znaků pro potřeby výše zmíněných operací pomocí \( a \)
 
-**Příklady použití regulárních výrazů v editoru sed
+**Příklady použití regulárních výrazů v editoru sed**
 
     – sed -n ’/ˆ The/ p’ books.txt
     – sed -n ’/ˆ .) The/ p’ books.txt
