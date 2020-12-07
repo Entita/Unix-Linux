@@ -1,6 +1,7 @@
 # Pohyb v terminálu
 
  Ctrl + a Skok na začátek řádku (Home)
+ 
  Ctrl + e Skok na konec řádku (End)
  Ctrl + p Předchozí příkaz (Up arrow)
  Ctrl + n Následující příkaz (Down arrow)
