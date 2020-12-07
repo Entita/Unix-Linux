@@ -1083,7 +1083,7 @@ Odkazování se na části vzoru
     sed ’s/\([ˆ ]\+\) \([ˆ ]\+\)/\2 \1/’ pokus.txt
     sed ’s/\([[:alpha:]][ [:alpha:]]*\), \([. [:alpha:]]*\),/\2: \1,/’books.txt     
     
-# Struktura programu
+# Struktura programu AWK
 AWK čte soubor po řádcích a hledá vzorek. Pokud jej na řádku najde pak vykoná akci. Jakmile projde všechny vzorky tak program pokračuje na další řádek a znovu prochází všechny vzorky. Vzorek i akce lze vynechat ale ne současně. Pokud není vzorku určena akce tak se vyhovujíví řádek zkopíruje na výstup. Pokud vynecháme vzorek zak se akce provede na každý řádek. Akci musíme uzavřít do '{}'.
 
 https://kam.mff.cuni.cz/~setnicka/static/unix/AWK.pdf
@@ -1156,7 +1156,7 @@ Funkce se defuní následovně:
 
     function jméno(seznam_parametrů) { příkazy }    
     
-================================================================================================================================================================================
+========================================================================================================================
 
 # Jazyk AWK
 
