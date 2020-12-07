@@ -3,8 +3,8 @@
 
     zdroje:
 
-       https://vyjidacek.cz/unix/
+  https://vyjidacek.cz/unix/
   
-       https://mamut.spseol.cz/nozka/psk/
+  https://mamut.spseol.cz/nozka/psk/
   
-       http://outrata.inf.upol.cz/courses/uss/
+  http://outrata.inf.upol.cz/courses/uss/
