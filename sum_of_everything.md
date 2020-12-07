@@ -231,7 +231,6 @@
     // 5	r-x
     // 6	rw-
     // 7	rwx
-# Výpis a ukončení procesů
 
 # Výpis procesů
 
@@ -409,7 +408,226 @@
 
     michal@virtual ~ $ echo '   a'
        a
+       
+# Příkaz head
 
+    // Vypíše prvních 10 řádků souboru
+    head procesy.txt
+
+    // Vypíše prvních 10 řádků z každého souboru
+    head procesy.txt procesy2.txt
+
+    // Udělá to samé co předchozí ale nevypisuje hlavičku
+    head -q procesy.txt procesy2.txt
+
+    // Vypíše 2 řádky od začátku souboru
+    head -n 2  procesy.txt
+    head -2 procesy.txt
+
+    // Vrátí prvních n bajtů
+    head -c 5 procesy.txt
+
+    // Přesměrování do souboru
+    head -n 2 procesy.txt > qux.txt
+
+    // Použití roury
+    ls | head
+
+    // Presměrování na konec souboru
+    ls | head >> baz.txt
+    
+# Příkaz tail
+
+    // Vypíše posledních 10 řádků souboru
+    tail procesy.txt
+
+    // Vypíše posledních 10 řádků z každého souboru
+    tail procesy.txt procesy2.txt
+
+    // Udělá to samé co předchozí ale nevypisuje hlavičku
+    tail -q procesy.txt procesy2.txt
+
+    // Vypíše 2 řádky od konce souboru
+    tail -n 2  procesy.txt
+    tail -2 procesy.txt
+
+    // Vrátí posledních n bajtů
+    tail -c 5 procesy.txt
+
+    // Přesměrování do souboru
+    tail -n 2 procesy.txt > qux.txt
+
+    // Použití roury
+    ls | tail
+
+    // Presměrování na konec souboru
+    ls | tail >> baz.txt
+   
+# Příkaz wc
+
+    // Vrátí počet řádků, slov a bitů v souboru
+    wc procesy.txt
+
+    // Vrátí počet řádků
+    wc -l procesy.txt
+
+    // Vrátí počet znaku
+    wc -m procesy.txt
+
+    // Vrátí počet slov
+    wc -w procesy.txt
+    
+# Příkaz tac
+
+Zobrazí obsah souboru na std výstupu ale v opačném pořadí. 
+
+    tac file.txt
+
+# Příkaz rev
+
+Obrátí pořadí znaků v řetězci.
+
+    echo "Hello" | rev
+
+# Příkaz sort
+
+Setřídí řádky textového souboru.
+
+    // Setřídí řádky podle abecedy
+    sort fruit.txt
+
+    // Setřídí řádky podle abecedy a výsledek uloží do souboru output.txt
+    sort fruit.txt > output.txt
+    sort -o output.txt fruit.txt
+
+    // Setřídí řádky v opačném pořadí
+    sort -r fruit.txt
+
+    // Zkontroluje jestli je soubor setřízený pokud ne vrací první špatně umístěný řádek
+    sort -c fruit.txt
+
+    cat columns.txt
+    01 Joe
+    02 Marie
+    03 Albert
+    04 Dave
+
+    // Soubor se třídí podle prvního sloupce
+    sort columns.txt
+
+    // Soubor se třídí podle druhého sloupce
+    sort -k 2 columns.txt
+    
+# Příkaz unique
+
+Odstraní opakující se řádky.
+
+    uniq unique.txt
+
+    // Vypíše počet opakování
+    uniq -c unique.txt
+
+    // Vypíše pouze opakující se řádky
+    uniq -d unique.txt
+
+    // Vypíše neopakující se řádky
+    uniq -u unique.txt
+    
+
+# Příkaz cut
+
+Odebere nebo vyjme část souboru.    
+
+    // Vybere 3. sloupec
+    cut -f 3 cut.txt
+
+    //  Vybere 2 az 4 sloupec
+    cut -f 2-4 cut.txt
+
+    // Vybere 1. až 2. a 4. až 5. sloupec
+    cut -f 1-2,4-5 cut.txt
+
+    // Vybere 3. sloupec a dále
+    cut -f 3- cut.txt
+
+    // Vybere 3. znak na každém řádku
+    cut -c 3 cut.txt
+
+    // Vybere 3. až 12. znak na každém řádku
+    cut -c 3-12 cut.txt
+
+    // Vybere 3. až 12. Byte
+    cut -b 3-12 cut.txt
+
+    // Pomocí -d změníme oddělovač sloupců
+    cut -f 1 -d ':' /etc/passwd
+  
+# Příkaz paste
+
+Vypíše obsah souborů vedle sebe.
+
+    // Paralelně
+    paste paste.txt paste2.txt
+
+    // Sériově
+    paste -s paste.txt paste2.txt
+
+    // Změní oddělovač sloupců
+    paste -d "-"  paste.txt paste2.txt
+
+    // Spojí dva soubory a oddělí je tabulátorem
+    paste fruit.txt fruitLarge.txt
+
+    // Spojí dva soubory ale oddělí je znakem =
+    paste -d =  fruit.txt fruitLarge.txt
+
+# Příkaz grep
+
+Nástroj pro filtrování řádků na základě regularního výrazu.
+
+    // Vybere řádky obsahující dané slovo
+    grep parallels /etc/passwd
+    grep "Feb 26 17:0" /var/log/kern.log
+
+    // Rekurzivní procházení adresáře
+    grep -r "banana" pokus
+
+    // Vypíše řádky obsahující slovo
+    grep -w "ps" procesy.txt
+
+    // Vypíše počet nalezených řádků
+    grep -cw "ps" procesy.txt
+
+    // Řádky začínající znakem c
+    grep "^c" file.txt
+
+    // Řádky obsahující číslo
+    grep "[0-9]" file.txt
+
+    // Řádky obsahující slovo proces nebo file
+    grep 'proces\|file' file.txt
+
+    // Radky obsahujici slova o delce 7 - 8 znaku
+    grep -E "[[:alpha:]]{7,8}" file.txt
+    
+
+# Příkaz tr
+Konvertuje nebo smaže znaky.
+
+    // Preloží malá písmena na velká
+    tr "[:lower:]" "[:upper:]" < fruit.txt
+
+    // Odebere číslice
+    echo "Abc123d56E" | tr -d '[[:digit:]]'
+
+    // Nahradí znaky které nejsou A znakem t
+    echo "Abc123d56E" | tr -c 'A' 't'
+
+    // Nahradí mezery znakem /
+    echo "Can you see how tr command can be wonderful?" | tr -s " " "/"
+
+    // Nahradí více mezer jdoucí po sobě jednou
+    echo "Can you                 see how tr          command can be wonderful?" | tr -s " "
     
 # Basics
 man -> manuálová stránka
