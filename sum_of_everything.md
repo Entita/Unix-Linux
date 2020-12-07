@@ -632,7 +632,7 @@ Konvertuje nebo smaže znaky.
 
 – vytvořil ho Ken Thompson v roce 1974
 
-Nejdůležitější přepínače
+**Nejdůležitější přepínače**
 
 – zadaný vzor odpovídá celému slovu (přepínač -w)
 
@@ -678,39 +678,38 @@ Nejdůležitější přepínače
 
 Příklady použití
 
-– Výběr řádků obsahujících řetězec
+**Výběr řádků obsahujících řetězec**
 
 grep kuhrtoma /etc/passwd
 
 ls -l ~/. | grep "Feb 22"
 
 
-– Hledání řádků obsahujících vzor jako celé slovo
+**Hledání řádků obsahujících vzor jako celé slovo**
 
 ps aux | grep -w "ps"
 
 
-– Vypsání pouze počtu řádku
+**Vypsání pouze počtu řádku**
 
 ps aux | grep -cw "ps"
 
 
-– Hledání řádků se vzorem na začátku
+**Hledání řádků se vzorem na začátku**
 
 ls -l ~/zalohy/. | grep "^total"
 
 
-– Hledání řádků končících číslicí 0 až 4
+**Hledání řádků končících číslicí 0 až 4**
 
 grep "[0-4]$" books.txt
 
 
-– Hledání řádků končících 2 nebo 3 číslicemi
+**Hledání řádků končících 2 nebo 3 číslicemi**
 
 grep -E " [[:digit:]]{2,3}$" books.txt
 
-
-– Hledání řádků obsahujících „process“ nebo „file“
+**Hledání řádků obsahujících „process“ nebo „file“**
 
 grep -E ’Martin|Tolkien’ books.txt
 
@@ -741,13 +740,13 @@ grep -E ’Martin|Tolkien’ books.txt
 
 # Zpracování souboru pomocí sed
 
-1 Read
+**1 Read**
 
 – načte se jeden řádek vstupního proudu (souboru)
 
 – existují ale i možnosti, jak pracovat s více řádky najednou
 
-2 Execute
+**2 Execute**
 
 – zjistí se, zda se má daný příkaz (transformace) na načtený řádek použít
 
@@ -761,13 +760,13 @@ grep -E ’Martin|Tolkien’ books.txt
 
 – zpracovávaných příkazů může být větší množství, postupně se provádějí všechny
 
-3 Display
+**3 Display**
 
 – upravený řádek se pošle do výstupního proudu
 
 # Možnosti spuštění editoru sed
 
-Příkazy zadané přímo do promtu
+**Příkazy zadané přímo do promtu**
 
 – pokud je příkazů malé množství a jsou spíše jednodušší
 
@@ -775,7 +774,7 @@ Příkazy zadané přímo do promtu
 
 – příklad: sed -e ’1d’ -e ’2d’ -e ’5d’ books.txt
 
-Příkazy zadané v souboru
+**Příkazy zadané v souboru**
 
 – pokud je příkazů více nebo jsou složitější
 
@@ -789,7 +788,7 @@ Příkazy zadané v souboru
 
 – lze použít také ./script.txt books.txt
 
-Nejobvyklejší přepínače
+**Nejobvyklejší přepínače**
 
 – předání více příkazů z promtu (přepínač -e)
 
@@ -797,13 +796,13 @@ Nejobvyklejší přepínače
 
 – pouze výpis řádků, u kterých je uveden příkaz pro tisk (přepínač -n)
 
-Číslem řádku
+**Číslem řádku**
 
 – uvedením čísla řádku před příkazem
 
 – příklad: sed -n ’3p’ books.txt
 
-Rozsahem čísel řádků
+**Rozsahem čísel řádků**
 
 – uvedením čísla prvního a posledního řádku oddělených čárkou
 
@@ -813,13 +812,13 @@ Rozsahem čísel řádků
 
 – příklad: sed -n ’3,$ p’ books.txt
 
-Počtem řádků a číslem prvního
+**Počtem řádků a číslem prvního**
 
 – číslo posledního řádku výčtu je možné vyjádřit i relativně k prvnímu (pomocí +)
 
 – příklad: sed -n ’2,+3 p’ books.txt
 
-Každý x-tý řádek
+**Každý x-tý řádek**
 
 – lze zpracovávat také každý x-tý řádek počínaje zadaným řádkem
 
@@ -827,7 +826,7 @@ Každý x-tý řádek
 
 Možnosti výběru řádků v editoru sed
 
-Řádky s výskytem vzoru
+**Řádky s výskytem vzoru**
 
 – vzorem může být textový řetězec, ale i regulární výraz (viz dále)
 
@@ -835,7 +834,7 @@ Možnosti výběru řádků v editoru sed
 
 – příklad: sed -n ’/Paulo/ p’ books.txt
 
-Řádky od jednoho vzoru po druhý vzor
+**Řádky od jednoho vzoru po druhý vzor**
 
 – zapisujeme podobně jako při rozsahu čísel řádků
 
@@ -855,56 +854,56 @@ sed -n ’/Alchemist/,+2 p’ books.txt
 
 # Základní příkazy editoru sed
 
-    Tisk řádku
+    **Tisk řádku**
     – pomocí příkazu p
     – pokud nebyl sed spuštěn s přepínačem -n, duplikace
     – příklad: sed -e ’p’ -e ’p’ books.txt
     
-    Smazání řádku
+    **Smazání řádku**
     – pomocí příkazu d
     – příklad: sed ’2,4 d’ books.txt
     
-    Ukončení programu
+    **Ukončení programu**
     – pomocí příkazu q
     – pokud chceme provádět úpravy pouze do určitého místa textu
     – příklad: sed ’/The Alchemist/ q’ books.txt
     
-    Výměny znaků
+    **Výměny znaků**
     – pomocí příkazu y
     – za příkazem se uvedou vzory a obrazy znaků oddělené lomítky
     – příklad: sed ’3,5 y/aeiouy/AEIOUY/’ books.txt
     
-    Vložení řádku za daný řádek
+    **Vložení řádku za daný řádek**
     – pomocí příkazu a
     – příklad: sed ’$ a 7) Adultry, Paulo Coelho, 234’ books.txt
     
-    Vložení řádku před daný řádek
+    **Vložení řádku před daný řádek**
     – pomocí příkazu i
     – příklad: sed ’/The/ i 7) Adultry, Paulo Coelho, 234’ books.txt
     
-    Nahrazení řádku jiným
+    **Nahrazení řádku jiným**
     – pomocí příkazu c
     – příklad: sed ’3 c 3) Adultry, Paulo Coelho, 324’ books.txt
     
-    Možnost vkládat i více řádků
+    **Možnost vkládat i více řádků**
     – před, za či místo jednoho řádku
     – ve vkládaném řetězci použijeme speciální znak \n
     – pokud naopak ve skriptu dělíme příkaz na více řádků použijeme \
     – příklad: sed ’$ a 7) Adultry, Paulo Coelho, 234\n8) Eleven Minutes, \
     Paulo Coelho, 304’ books.txt
     
-    Vložení čísla řádku
+    **Vložení čísla řádku**
     – pomocí příkazu =
     – číslo řádku se vloží do výstupu před tento řádek (pokud se zobrazuje)
     – příklady:
     sed ’/Paulo/ =’ books.txt
     sed -n ’$ =’ books.txt
     
-    Inverze výběru
+    **Inverze výběru**
     – pomocí příkazu !
     – příklad: sed ’1~3 !d’ books.txt
     
-    Seskupování
+    **Seskupování**
     – pomocí složených závorek
     – umožňuje snadno definovat složitější výběry
     – příklad: sed -n ’1~3 {/The/ p}’ books.txt
