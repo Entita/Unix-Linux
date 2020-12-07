@@ -919,6 +919,88 @@ sed -n ’/Alchemist/,+2 p’ books.txt
     – umožňuje snadno definovat složitější výběry
     – příklad: sed -n ’1~3 {/The/ p}’ books.txt
 
+**Základní použití**
+        
+
+    sed [-n] [-e] 'příkazy' soubory
+    sed [-n] -f script soubory
+        
+**Výpis textu**        
+
+    // Vytiskne obsah souboru (každý řádek 2x)
+    sed 'p' text.txt
+
+    // Vytiskne obsah souboru
+    sed -n 'p' text.txt
+
+    // Vytiskne první řádek
+    sed -n '1p' text.txt
+
+    // Vytiskne 1. až 5. řádek
+    sed -n '1,5p' text.txt
+
+    // Vytiskne první řádek následovaný dalšími 4.
+    sed -n '1,+4p' text.txt
+
+    // Vypíše každý druhý řádek
+    sed -n '1~2p' text.txt
+        
+**Mazání textu**
+        
+    // Smazání každého druhého řádku
+    sed '1~2d' text.txt
+
+    // Uložení výsledku do souboru
+    sed '1~2d' text.txt > output.txt
+
+    // Modifikace původního souboru
+    sed -i '1~2d' output.txt
+
+    // Vytvoření zálohy souboru před modifikací
+    sed -i.bak '1~2d' output.txt
+        
+**Nahrazení textu**        
+
+    // Syntaxe 's/old_word/new_word/'
+
+    // Testovací soubor
+    echo "this is the song that never ends
+    yes, it goes on and on, my friend
+    some people started singing it
+    not knowing what it was
+    and they'll continue singing it forever
+    just because..." > annoying.txt
+
+    echo "http://www.example.com/index.html" | sed 's_com/index_org/home_'
+
+    // Tento příkaz nahradí pouze první výskyt slova "on" slovem "forward"
+    sed 's/on/forward/' annoying.txt
+
+    // Přidáním parametru g řekneme že chceme nahradit každý výskyt na řádku
+    sed 's/on/forward/g' annoying.txt
+
+    // Můžeme také nahradit pouze druhý výskyt na řádku
+    sed 's/on/forward/2' annoying.txt
+
+    // Pokud chceme vytisknout pouze řádky kde nastala změna
+    sed -n 's/on/forward/2p' annoying.text
+
+    // Pomocí parametru i ignotujeme malá a velká písmena
+    sed 's/SINGING/saying/i' annoying.txt
+    
+**Pokročileší vyhledávání textu**        
+
+    // Nahradí text začínájící libovolným znakem následovaný libovolným řetězcem a končímím znaky at slovem REPLACED
+    sed 's/^.*at/REPLACED/' annoying.txt
+
+    // Uzavorkování textu který odpovídá regulárnímu výrazu
+    sed 's/^.*at/(&)/' annoying.txt
+
+    // Prohození prvních dvou slov na každém řádku
+    sed 's/\([^ ][^ ]*\) \([^ ][^ ]*\)/\2 \1/' annoying.txt
+    
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
 # Basics
 man -> manuálová stránka
 
