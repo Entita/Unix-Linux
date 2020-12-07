@@ -897,8 +897,7 @@ sed -n ’/Alchemist/,+2 p’ books.txt
     – před, za či místo jednoho řádku
     – ve vkládaném řetězci použijeme speciální znak \n
     – pokud naopak ve skriptu dělíme příkaz na více řádků použijeme \
-    – příklad: sed ’$ a 7) Adultry, Paulo Coelho, 234\n8) Eleven Minutes, \
-    Paulo Coelho, 304’ books.txt
+    – příklad: sed ’$ a 7) Adultry, Paulo Coelho, 234\n8) Eleven Minutes, \Paulo Coelho, 304’ books.txt
     
    **Vložení čísla řádku**
    
@@ -998,6 +997,92 @@ sed -n ’/Alchemist/,+2 p’ books.txt
 
     // Prohození prvních dvou slov na každém řádku
     sed 's/\([^ ][^ ]*\) \([^ ][^ ]*\)/\2 \1/' annoying.txt
+    
+**Substituce v editoru sed**
+
+– jeden z nejmocnějších příkazů editoru sed
+
+– pomocí příkazu s
+
+– obecná syntaxe: s/vzor/náhrada/modifikátory
+
+– i zde se ve vzoru může použít regulární výraz
+
+– a také řetězec náhrada může obsahovat některé speciální znaky či sekvence
+
+– mezi nejpoužívanější modifikaci pak patří provedení substituce u všech výskytů vzoru na daném řádku (modifikátor g)
+
+– substituci lze provést také jen u některých výskytu vzoru (číslo v modifikátoru)
+
+– příklady:
+
+    sed ’s/,/ | /’ books.txt
+    sed ’s/,/ | /g’ books.txt
+    sed ’/The Pilgrimage/ s/,/ | /g’ books.txt
+    sed ’/The Pilgrimage/ s/,/ | /2’ books.txt
+    
+**Regulární výrazy v editoru sed**
+
+– 1 libovolný znak (znak . ve vzoru)
+
+– nepovinný výskyt znaku (\? za daným znakem)
+
+– libovolný (i nulový) počet opakování znaku (* za daným znakem)
+
+– nenulový počet opakování znaku (\+ za daným znakem)
+
+– přesně daný počet opakování (\{počet\} za daným znakem)
+
+– počet opakování v daném rozsahu (\{od, do\} za daným znakem)
+
+– alespoň daný počet opakování (\{od, \} za daným znakem)
+
+– libovolný znak z množiny ([výčet] nebo [od-do])
+
+– libovolný znak mimo množinu ([ˆvýčet] nebo [ˆod-do])
+
+– lze použít i mnoho předdefinovaných skupin znaků (např. [:alpha:])
+
+– definování alternativ pomocí logického spojky „nebo“ (znaky \|)
+
+– možnost pracovat se začátky řádků (znak ˆ )
+
+– možnost pracovat s konci řádků (znak $)
+
+– seskupování znaků pro potřeby výše zmíněných operací pomocí \( a \)
+
+**Příklady použití regulárních výrazů v editoru sed
+
+    – sed -n ’/ˆ The/ p’ books.txt
+    – sed -n ’/ˆ .) The/ p’ books.txt
+    – sed -n ’/[468]$/ p’ books.txt
+    – sed -n ’/\(Tolkien\|Martin\),/ p’ books.txt
+    – sed -n ’/[[:digit:]]\{4\}/ p’ books.txt
+    – sed -nr ’/[[:digit:]]{4}/ p’ books.txt
+    – sed -n ’/100\?/ p’ numbers.txt
+    – sed -nr ’/100?$/ p’ numbers.txt
+    – sed -nr ’/10{5}$/ p’ numbers.txt
+    – sed -nr ’/10{5,7}$/ p’ numbers.txt
+    – sed -nr ’/10{5,}$/ p’ numbers.txt
+    – sed -nr ’/1(00)*$/ p’ numbers.txt
+    
+
+**Pokročilejší možnosti substitucí v editoru sed**
+
+Odkazování se na nalezený vzor pomocí znaku &
+
+    sed ’s/[[:digit:]]/Book number &/’ books.txt
+    sed ’s/[[:digit:]]*$/Pages = &/’ books.txt
+    
+Odkazování se na části vzoru
+
+– pomocí \( a \) definujeme jednotlivé části vzoru
+
+– pomocí sekvencí \1, \2, . . . , \9 sestavíme nahrazující řetězec
+
+    sed ’s/\([ˆ ]\+\) \([ˆ ]\+\)/\2 \1/’ pokus.txt
+    sed ’s/\([[:alpha:]][ [:alpha:]]*\), \([. [:alpha:]]*\),/\2: \1,/’books.txt
+
     
 --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
