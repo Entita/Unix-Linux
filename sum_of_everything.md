@@ -1,16 +1,16 @@
 # Pohyb v terminálu
-Pohyb v terminálu
-Ctrl + a Skok na začátek řádku (Home)
-Ctrl + e Skok na konec řádku (End)
-Ctrl + p Předchozí příkaz (Up arrow)
-Ctrl + n Následující příkaz (Down arrow)
-Ctrl + f Vpřed o jeden znak (Right arrow)
-Ctrl + b Vzad o jeden znak (Left arrow)
-Ctrl + xx Přepínání mezi začátkem řádku a aktuální pozicí kurzoru
-Ctrl + r Vyhledávání v historii příkazů
+
+ Ctrl + a Skok na začátek řádku (Home)
+ Ctrl + e Skok na konec řádku (End)
+ Ctrl + p Předchozí příkaz (Up arrow)
+ Ctrl + n Následující příkaz (Down arrow)
+ Ctrl + f Vpřed o jeden znak (Right arrow)
+ Ctrl + b Vzad o jeden znak (Left arrow)
+ Ctrl + xx Přepínání mezi začátkem řádku a aktuální pozicí kurzoru
+ Ctrl + r Vyhledávání v historii příkazů
 Kopírování a vkládání
-Ctrl + Shift + c Kopírování
-Ctrl + Shift + v Vkládání
+ Ctrl + Shift + c Kopírování
+ Ctrl + Shift + v Vkládání
 
 # Adresáře 
 
