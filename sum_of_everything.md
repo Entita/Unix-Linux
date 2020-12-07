@@ -854,56 +854,67 @@ sed -n ’/Alchemist/,+2 p’ books.txt
 
 # Základní příkazy editoru sed
 
-    **Tisk řádku**
-    – pomocí příkazu p
-    – pokud nebyl sed spuštěn s přepínačem -n, duplikace
-    – příklad: sed -e ’p’ -e ’p’ books.txt
-    
-    **Smazání řádku**
+   **Tisk řádku**
+   
+     – pomocí příkazu p
+     – pokud nebyl sed spuštěn s přepínačem -n, duplikace
+     – příklad: sed -e ’p’ -e ’p’ books.txt
+     
+   **Smazání řádku**
+   
     – pomocí příkazu d
     – příklad: sed ’2,4 d’ books.txt
     
-    **Ukončení programu**
+   **Ukončení programu**
+
     – pomocí příkazu q
     – pokud chceme provádět úpravy pouze do určitého místa textu
     – příklad: sed ’/The Alchemist/ q’ books.txt
     
-    **Výměny znaků**
+   **Výměny znaků**
+   
     – pomocí příkazu y
     – za příkazem se uvedou vzory a obrazy znaků oddělené lomítky
     – příklad: sed ’3,5 y/aeiouy/AEIOUY/’ books.txt
     
-    **Vložení řádku za daný řádek**
+   **Vložení řádku za daný řádek**
+   
     – pomocí příkazu a
     – příklad: sed ’$ a 7) Adultry, Paulo Coelho, 234’ books.txt
     
-    **Vložení řádku před daný řádek**
+   **Vložení řádku před daný řádek**
+   
     – pomocí příkazu i
     – příklad: sed ’/The/ i 7) Adultry, Paulo Coelho, 234’ books.txt
     
-    **Nahrazení řádku jiným**
+   **Nahrazení řádku jiným**
+   
     – pomocí příkazu c
     – příklad: sed ’3 c 3) Adultry, Paulo Coelho, 324’ books.txt
     
-    **Možnost vkládat i více řádků**
+   **Možnost vkládat i více řádků**
+   
     – před, za či místo jednoho řádku
     – ve vkládaném řetězci použijeme speciální znak \n
     – pokud naopak ve skriptu dělíme příkaz na více řádků použijeme \
     – příklad: sed ’$ a 7) Adultry, Paulo Coelho, 234\n8) Eleven Minutes, \
     Paulo Coelho, 304’ books.txt
     
-    **Vložení čísla řádku**
+   **Vložení čísla řádku**
+   
     – pomocí příkazu =
     – číslo řádku se vloží do výstupu před tento řádek (pokud se zobrazuje)
     – příklady:
     sed ’/Paulo/ =’ books.txt
     sed -n ’$ =’ books.txt
     
-    **Inverze výběru**
+   **Inverze výběru**
+   
     – pomocí příkazu !
     – příklad: sed ’1~3 !d’ books.txt
     
-    **Seskupování**
+   **Seskupování**
+   
     – pomocí složených závorek
     – umožňuje snadno definovat složitější výběry
     – příklad: sed -n ’1~3 {/The/ p}’ books.txt
