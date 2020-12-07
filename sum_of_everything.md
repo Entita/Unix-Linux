@@ -55,19 +55,19 @@
     // Kombinace přepinačů -l -a
     michal@virtual ~ $ ls -la
     total 200
-    drwxr-xr-x 21 roman roman  4096 Feb 11 10:35 .
+    drwxr-xr-x 21 michal michal  4096 Feb 11 10:35 .
     drwxr-xr-x  3 root  root   4096 Jan 29 18:43 ..
-    -rw-------  1 roman roman    89 Jan 29 19:16 .bash_history
-    -rw-r--r--  1 roman roman   220 Jan 29 18:43 .bash_logout
-    -rw-r--r--  1 roman roman  4000 Jan 29 18:43 .bashrc
-    drwxrwxr-x 11 roman roman  4096 Feb 11 10:40 .cache
-    drwxr-xr-x 14 roman roman  4096 Feb 10 21:37 .config
-    drwx------  3 roman roman  4096 Jan 29 18:46 .dbus
-    drwxr-xr-x  2 roman roman  4096 Jan 29 19:08 Desktop
-    drwxr-xr-x  2 roman roman  4096 Jan 29 18:46 Documents
-    drwxr-xr-x  2 roman roman  4096 Jan 29 18:50 Downloads
-    drwxrwxr-x  2 roman roman  4096 Feb 10 21:32 fontconfig
-    drwxrwxr-x  2 roman roman  4096 Jan 29 18:47 .fontconfig
+    -rw-------  1 michal michal    89 Jan 29 19:16 .bash_history
+    -rw-r--r--  1 michal michal   220 Jan 29 18:43 .bash_logout
+    -rw-r--r--  1 michal michal  4000 Jan 29 18:43 .bashrc
+    drwxrwxr-x 11 michal michal  4096 Feb 11 10:40 .cache
+    drwxr-xr-x 14 michal michal  4096 Feb 10 21:37 .config
+    drwx------  3 michal michal  4096 Jan 29 18:46 .dbus
+    drwxr-xr-x  2 michal michal  4096 Jan 29 19:08 Desktop
+    drwxr-xr-x  2 michal michal  4096 Jan 29 18:46 Documents
+    drwxr-xr-x  2 michal michal  4096 Jan 29 18:50 Downloads
+    drwxrwxr-x  2 michal michal  4096 Feb 10 21:32 fontconfig
+    drwxrwxr-x  2 michal michal  4096 Jan 29 18:47 .fontconfig
 
     // Změna adresáře
     michal@virtual ~ $ cd public_html/
