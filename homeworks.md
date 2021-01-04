@@ -14,18 +14,31 @@
         30630 pts/1 00:00:00 bash
         32361 pts/1 00:00:00 ps
 
-$ echo "Domovský adresar: " > prvniukol.txt
+        $ echo "Domovský adresar: " > prvniukol.txt
 
-$ pwd >> prvniukol.txtTT
+        $ pwd >> prvniukol.txtTT
 
-$ echo "  " >> prvniukol.txt
+        $ echo "  " >> prvniukol.txt
 
-$ echo "Obsah domovského adresare: " >> prvniukol.txt
+        $ echo "Obsah domovského adresare: " >> prvniukol.txt
 
-$ ls -l >> prvniukol.txt
+        $ ls -l >> prvniukol.txt
 
-$ echo "  " >> prvniukol.txt
+        $ echo "  " >> prvniukol.txt
 
-$ echo "Aktualně běžící procesy:  " >> prvniukol.txt
+        $ echo "Aktualně běžící procesy:  " >> prvniukol.txt
 
-$ ps >> prvniukol.txt
+        $ ps >> prvniukol.txt
+
+# V adresáři /etc najděte všechny soubory s příponou „conf“ a zjistěte, který z nich má nejvíce řádek.
+
+# Vypište seznam uživatelů ve tvaru "login_jmeno=JMENO PRIJMENI". Seznam uživatelů naleznete v souboru /etc/passwd.
+        $ touch tretiuloha.txt
+        $ cat /etc/passwd > tretiuloha.txt
+        $ cut -f 1,5 -d : tretiuloha.txt | cat > temp.txt
+        $ cut -f 1 -d : tretiuloha.txt | cat > temporary.txt
+        $ cat temporary.txt > tretiuloha.txt
+        $ rm temporary.txt
+        $ cut -f 2 -d : temp.txt | cat > temporary.txt
+        $ rm temp.txt
+        $ paste -d "=" tretiuloha.txt temporary.txt
