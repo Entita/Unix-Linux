@@ -46,3 +46,39 @@
 
 # Vytvořte sed skript, který v textovém souboru nejde všechny řádky mezi značkamiBEGIN a END, které obsahují nějaké desetinné číslo. Můžete předpokládat, že BEGINa END jsou na samostatných řádcích.
         $ sed -n ' /BEGIN/, /END/p' cisla.txt > temporary.txt | sed -n '/\.[0-9]/p' temporary.txt
+
+# Vytvořte sed skript, který prohodí v tabulkovém textu (sloupce oddělené tabulátorem) první a třetí sloupec. 
+        $ sed 's/\([^\t]*\)\t\([ ^\t]*\)/\3\t\2\t\1\' text.txt
+
+# Uvažujme text, ve kterém některé řádky představují nadpisy uvozené číslováním 1., 1.1, 1.1.1 atd. Vytvořte sed skript, který z textu vypíše pouze tyto nadpisy, bez číslování, ve stromové struktuře - odsazením levého okraje podnadpisů od levého okraje nadřazeného nadpisu mezerou.
+        $ sed -r -e '/^[ ^0-9]/ / d' -e 's/^[ 0-9]+./ /' -e 's/[ 0-9]+/ /g' -e ' text.txt 
+        
+# Implementujte v awk zjednodušenou verzi wc: výpis počtu znaků, slov (řetězců oddělených mezerami) a řádků v textu. Můžete použít funkci length pro zjištění délkyřetězce.
+        $ awk '{pismena+=length($0)+1;slovo+=NF} END{print(NR,slovo,pismena)}' text.txt | cat > text_.txt 
+        
+# Napište AWK skript, který všechny řádky začínající řetězcem „end: “ přesune na konec souboru a řetězec „end:“ při tom zcela vynechá.
+        $ awk '/^end:/ {odliseni = odliseni $0 "\n"} !/^end:/ {print} END{printf odliseni}' text.txt |sed "s/^end: //" | cat > text_.txt 
+
+# Implementujte v awk převrácení tabulkových dat (sloupce oddělené mezerami) podle hlavní diagonály, tj. výměnu řádků a sloupců.
+        $ awk ' { for (i = 1; i <= NF; i++) { a[NR, i] = $i } } NF > y { y = NF } END { for(j = 1; j <= y; j++) { str = a[1, j] ;for(i = 2; i <= NR; i++){ str = str" "a[i, j]; }         print str } }' ukol10_1.txt  
+
+# Pomocí awk vypočítejte pro zadaný soubor s čísly (1 sloupec) jejich průměr a směrodatnou odchylku.
+        $ awk '{ sum += $1; result++ } END { print sum/result }' ukol10_2.txt & awk '{value_x+=$0;value_y += $0^2}END{print sqrt(value_y/NR-(value_x/NR)^2)}' ukol10_2.txt 
+
+# Vytvořte skript, který pro 3 zadaná čísla vypíše jejich minimum. 
+
+   Příklad použití:
+   
+                  [kuhrtoma@phoenix xunix]$./min.sh 2 1 3
+                  1
+-------------------------------
+                  
+                   [kuhrtoma@phoenix xunix]$ cat min.sh
+                  #!/bin/bash
+                  
+                  if [ $1 -le $2 ] && [ $1 -le $3 ]; then MIN = $1;
+                  elif [ $2 -le $3 ]; then MIN = $2
+                  else MIN = $3
+                  fi
+                  
+                  echo $MIN
