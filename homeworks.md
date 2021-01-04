@@ -1,6 +1,5 @@
 # Napište příkazy, které vytvoří soubor s názvem me.txt, který bude vypadat následovně:
 
-
         Domovsky adresar:
         /home/PRFAD/kuhrtoma
         Obsah domovskeho adresare:
@@ -15,3 +14,11 @@
         30630 pts/1 00:00:00 bash
         32361 pts/1 00:00:00 ps
 
+$ echo "Domovský adresar: " > prvniukol.txt
+$ pwd >> prvniukol.txtTT
+$ echo "  " >> prvniukol.txt
+$ echo "Obsah domovského adresare: " >> prvniukol.txt
+$ ls -l >> prvniukol.txt
+$ echo "  " >> prvniukol.txt
+$ echo "Aktualně běžící procesy:  " >> prvniukol.txt
+$ ps >> prvniukol.txt
