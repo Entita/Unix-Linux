@@ -1,6 +1,7 @@
 # Napište příkazy, které vytvoří soubor s názvem me.txt, který bude vypadat následovně:
 
    Domovsky adresar:
+   
         /home/PRFAD/kuhrtoma
    Obsah domovskeho adresare:
    
