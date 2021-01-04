@@ -28,6 +28,7 @@
         $ ps >> prvniukol.txt
 
 # V adresáři /etc najděte všechny soubory s příponou „conf“ a zjistěte, který z nich má nejvíce řádek.
+         $ wc -l /etc/*.conf | sort -nr
 
 # Vypište seznam uživatelů ve tvaru "login_jmeno=JMENO PRIJMENI". Seznam uživatelů naleznete v souboru /etc/passwd.
         $ touch tretiuloha.txt
@@ -39,3 +40,9 @@
         $ cut -f 2 -d : temp.txt | cat > temporary.txt
         $ rm temp.txt
         $ paste -d "=" tretiuloha.txt temporary.txt
+        
+# Pomocí nástroje grep zobrazte pouze ty řádky vstupního souboru, které obsahují jednoduché matematické formule – tj. vždy jeden operátor = , libovolné základní matematické operace (+, -, * /) a proměnné (znaky a až z). 
+         neudělal jsem !
+
+# Vytvořte sed skript, který v textovém souboru nejde všechny řádky mezi značkamiBEGIN a END, které obsahují nějaké desetinné číslo. Můžete předpokládat, že BEGINa END jsou na samostatných řádcích.
+        $ sed -n ' /BEGIN/, /END/p' cisla.txt > temporary.txt | sed -n '/\.[0-9]/p' temporary.txt
