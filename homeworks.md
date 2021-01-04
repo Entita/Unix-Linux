@@ -82,3 +82,25 @@
                   fi
                   
                   echo $MIN
+                  
+# Vytvořte skript, který vytvoří adresáře A až F a v každém z nich (stačí prázdné) soubory 1.log až 99.log.
+
+   Příklad použití:
+   
+                  [kuhrtoma@phoenix xunix]$./make.sh 
+-------------------------------
+                  
+                   [kuhrtoma@phoenix xunix]$ cat make.sh
+                  #!/bin/bash
+                  
+                  for adresar in {A..F}
+                  do
+                     mkdir $adresar
+                     cd $adresar
+                     for soubor in {1..}
+                     do
+                        touch $soubor.log
+                     done
+                     cd ..
+                  done
+                  
