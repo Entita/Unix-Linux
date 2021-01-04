@@ -16,6 +16,7 @@
         PID TTY TIME CMD
         30630 pts/1 00:00:00 bash
         32361 pts/1 00:00:00 ps
+--------------------------------------
 
         $ echo "Domovský adresar: " > prvniukol.txt
         $ pwd >> prvniukol.txtTT
