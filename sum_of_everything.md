@@ -1462,7 +1462,64 @@ Příklady použití regulárních výrazů v AWK
     awk ’$1 ~ "100*" {print}’ numbers.txt
     awk ’{if ($1 ~ "100*") print}’ numbers.txt
 
+# Basics
+
+– interpret příkazů v unixových systémech
+
+– název je akronym pro Bourne Again SHell
+
+– původní autor Brian Fox
+
+– vytvořen 1989 v rámci GNU projektu
+
+– plnohodnotný programovací jazyk
+
+– doplněný konstrukcemi pro práci se základními nástroji (GNU Core Utilities) a dalšími programy
+
+– existuje mnoho alternativ: Bourne shell, C shell, Korn shell, Z shell
+
+– spouští se při přihlášení uživatele (lokálním i vzdáleném)
+
+– přihlašovací (login) vs. nepřihlašovací (non-login) shell
+
+– interaktivní vs. neinteraktivní shell
+
+**Vytváření skriptů**
+
+– skript je běžný textový soubor
+
+– s nastaveným právem pro spouštění (klasicky pomocí chmod)
+
+– na první řádku skriptu by měla být tzv. hlavička
+
+    #!/bin/bash
+– skript pak lze spouštět jako libovolný program
+
+    ./skript ... parametry ...
     
+– znak # také uvozuje komentáře
+
+– ignorováno je vše od #  do konce řádku
+
+**Proměnné**
+
+– identifikátor proměnné může obsahovat jen písmena, číslice a znak podtržítko
+
+– Bash pracuje s hodnotami proměnných jako s řetězci
+
+– proměnné mohou být deklarované jako pouze pro čtení (pomocí readonly)
+
+**Přiřazení**
+
+– proměnnou není třeba předem definovat
+
+– při přiřazení je proměnná vytvořena a je jí nastavena hodnota
+
+– příklad:
+
+    NAME="Tomas Kuhr"
+
+
 --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 # Basics
