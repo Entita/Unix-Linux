@@ -1780,6 +1780,8 @@ Příklady použití regulárních výrazů v AWK
        echo $j;
     done
 -----------------
+..................
+###################
     for name in *;
     do
        echo $name;
