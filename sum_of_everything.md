@@ -1462,7 +1462,7 @@ Příklady použití regulárních výrazů v AWK
     awk ’$1 ~ "100*" {print}’ numbers.txt
     awk ’{if ($1 ~ "100*") print}’ numbers.txt
 
-# Basics
+# Shell BASH
 
 – interpret příkazů v unixových systémech
 
@@ -1509,7 +1509,7 @@ Příklady použití regulárních výrazů v AWK
 
 – proměnné mohou být deklarované jako pouze pro čtení (pomocí readonly)
 
-**Přiřazení**
+***Přiřazení***
 
 – proměnnou není třeba předem definovat
 
@@ -1518,6 +1518,64 @@ Příklady použití regulárních výrazů v AWK
 – příklad:
 
     NAME="Tomas Kuhr"
+    
+***Dereference***
+
+– slouží k získání hodnoty proměnné
+
+– obvykle bývá součástí složitějšího příkazu
+
+– příklad:
+
+    echo $NAME
+    
+***Příkaz read***
+
+– slouží k zadání hodnoty proměnné uživatelem
+
+– příklad:
+
+    #!/bin/bash
+    echo "What is your name?"
+    read PERSON
+    echo "Hello, $PERSON"
+
+***Vnitřní proměnné***
+
+– v shellu máme přístup i k mnoha vnitřním proměnným operačního systému
+
+– například: HISTFILE, HISTFILESIZE, HOME, HOSTNAME, PATH, UID, USER, PWD, RANDOM, SHLVL, . . .
+
+**Speciální proměnné**
+
+– jejich identifikátor nesplňuje výše uvedená omezení
+
+– nemohou být vytvářeny a měněny běžným způsobem
+
+***$$***
+
+– proměnná obsahující PID shellu
+
+***$!***
+
+– PID posledního příkazu, který byl spuštěn na pozadí
+
+***$?***
+
+– návratová hodnota posledního dokončeného procesu
+
+***$0***
+
+– jméno souboru skriptu
+
+***$#***
+
+– počet argumentů uvedených při spuštění skriptu
+
+***$n***
+
+– n-tý argument uvedený při spuštění skriptu
+
 
 
 --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
