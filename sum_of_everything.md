@@ -1576,6 +1576,214 @@ Příklady použití regulárních výrazů v AWK
 
 – n-tý argument uvedený při spuštění skriptu
 
+**Program test**
+
+– umožňuje klasifikaci souborů, porovnávání řetězců i celých čísel a porovnávání souborů dle jejich stáří
+
+– obvykle místo test výraz píšeme [ výraz ] (pozor na mezery)
+
+***Možnosti zadání výrazu***
+
+– test, zda je řetězec str nenulový – [ str ]
+
+    příklad: [ $PATH ]; echo $?
+    
+– test, zda je řetězec str nulový – [ -z str ]
+
+    příklad: [ -z $PATH ]; echo $?
+    
+– řetězce str1 a str2 jsou shodné – [ str1 = str2 ]
+
+    příklad: [ $USER = kuhrtoma ]; echo $?
+    
+– řetězce str1 a str2 jsou různé – [ str1 != str2 ]
+
+    příklad: [ $USER != kuhrtoma ]; echo $?
+
+– čísla n1 a n2 jsou shodná – [ n1 -eq n2 ]
+
+    příklad: [ 1 -eq 01 ]; echo $?
+    
+– čísla n1 a n2 jsou různá – [ n1 -ne n2 ]
+
+    příklad: [ 1 -ne 01 ]; echo $?
+    
+– číslo n1 je menší nebo rovno n2 – [ n1 -le n2 ]
+
+    příklad: [ 1 -le 01 ]; echo $?
+    
+– číslo n1 je menší než n2 – [ n1 -lt n2 ]
+
+    příklad: [ 1 -lt 01 ]; echo $?
+    
+– číslo n1 je větší nebo rovno n2 – [ n1 -ge n2 ]
+
+    příklad: a=2;[ $a -ge 1 ]; echo $?
+    
+– číslo n1 je větší než n2 – [ n1 -gt n2 ]
+
+    příklad: a=2;b=1;[ $a -gt $b ]; echo $?
+    
+– test, zda soubor file existuje – [ -e file ]
+
+– test, zda je soubor file adresář – [ -d file ]
+
+– test, zda je soubor file obyčejný soubor – [ -f file ]
+
+– test, zda je soubor file symbolický odkaz – [ -L file ]
+
+– test, zda je soubor file možné číst – [ -r file ]
+
+– test, zda je do souboru file možné zapisovat – [ -w file ]
+
+– test, zda je soubor file spustitelný – [ -x file ]
+
+– test, zda je soubor file neprázdný – [ -s file ]
+
+– test, zda je soubor f1 novější než f2 – [ f1 -nt f2 ]
+
+– test, zda je soubor f1 starší než f2 – [ f1 -ot f2 ]
+
+– příklady:
+
+    [ -f skript.sh ]; echo $?
+    [ pokus.sh -ot skript.sh ]; echo $?
+
+***Logické operace***
+
+– slouží po konstrukci složitějších podmínek přímo v programu test
+
+– logická spojka NEBO (-o ve výrazu)
+
+– logická spojka A (-a ve výrazu)
+
+– negace (! ve výrazu)
+
+– příklady:
+
+    [ $a -lt 10 -o 20 -le $a ]; echo $?
+    [ $a -lt 10 -a 20 -le $b ]; echo $?
+    [ ! $a -lt 10 -a 20 -le $b ]; echo $?
+
+**Oddělovač příkazů**
+
+***Základní oddělovač***
+
+– pokud zadáváme více příkazů za sebou, oddělíme je středníkem
+
+– hodí se jak ve skriptech, tak při složitějších příkazech zadávaných do promtu
+
+– příklad: sleep 3; echo "*"
+
+***Podmíněné vykonání příkazu***
+
+– konstrukce umožňující provést příkaz na základě úspěšného vykonání předchozího příkazu
+
+– příkaz se vykoná, jen když se předchozí neskončil chybou (konstrukce &&)
+
+– příkaz se vykoná, jen když předchozí skončil chybou (konstrukce ||)
+
+– příklady:
+
+    cd bla && echo "*"
+    cd . && echo "*"
+    cd bla || echo "*"
+    cd . || echo "*"
+
+**Větvení**
+
+***Konstrukce if***
+
+– základní možnost větvení programu
+
+– možné tvary konstrukce if:
+
+    if podmínka; then příkazy; fi
+    if podmínka; then příkazy; else příkazy; fi
+    if podmínka; then příkazy; elif podmínka; then příkazy; ...
+    else příkazy; 
+    fi
+    
+– v podmínce odpovídá hodnota nula (korektní konec programu) pravdě, nenulová hodnota (chyba při vykonávání programu) pak nepravdě
+
+– část elif podmínka; then příkazy; se může vyskytovat vícekrát (s různými podmínkami a příkazy)
+
+– příklad:
+
+    if [ ! -e $1 ]; then echo "Neexistuje";
+    elif [ ! -s $1 ]; then echo "Je prazdny";
+    else echo "Existuje a je neprazdny";
+    fi
+
+***Konstrukce case***
+
+– zápis odpovídá následujícímu tvaru:
+
+    case výraz in vzory) příkazy;; ... esac
+    
+– část vzory) příkazy;; se může opakovat (s různými vzory a příkazy)
+
+– vyhodnotí se výraz a porovnává se postupně s jednotlivými vzory
+
+– pokud se nalezne odpovídající větev, provedou se dané příkazy a pokračuje se za konstrukcí case
+
+– větev může odpovídat více vzorům (oddělovač |)
+
+– vzory mohou obsahovat metaznaky *, ?, [, ] (pozor nemají význam jako v regulárních výrazech, ale jako při expanzi v shellu)
+
+– příklad:
+
+    case $1 in
+    [0-9]*|Ahoj) echo "Zacina cislici nebo je ahoj";;
+    [a-z]*[a-z]) echo "Zacina a konci malym pismenem";;
+    -?@) echo "Pomlka Neco Zavinac";;
+    *) echo "Neco jineho";;
+    esac
+    
+**Cykly**
+
+***Konstrukce for***
+
+– pravděpodobně nejpoužívanější konstrukce cyklu v Bashi
+
+– obecný tvar zápisu:
+
+    for proměnná in seznam; do příkazy; done
+    
+– seznam může obsahovat čísla i řetězce
+
+– může být zadán výčtem, jako číselná posloupnost nebo pomocí expanze jmen souborů
+
+– další možnosti je využít jako seznam výsledek jiného příkazu 
+
+– příklad:
+
+    for i in 1 2 3 4 5;
+    do
+       echo $i;
+    done
+    
+    for s in Aa Bb Cc Dd Ee Ff;
+    do
+       echo $s;
+    done
+
+– příklady:
+
+    for j in {1..5}
+    do
+       echo $j;
+    done
+    
+    for j in {1..10..2}
+    do
+       echo $j;
+    done
+-----------------
+    for name in *;
+    do
+       echo $name;
+    done
 
 
 --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
