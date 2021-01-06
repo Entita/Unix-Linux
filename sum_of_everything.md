@@ -2201,4 +2201,4 @@ echo "čau"-> vypsání textu na standartní výstup konzole
 echo "čau" | pokus.txt -> vypsání textu do souboru
 
 # Náhodné příklady
-kokotos
+
