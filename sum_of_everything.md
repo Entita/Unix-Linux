@@ -1095,13 +1095,13 @@ https://kam.mff.cuni.cz/~setnicka/static/unix/AWK.pdf
     vzorek { akce }
     vzorek { akce }
     ...
-            
-**Výstup**
-     
+    
  ***Jak spoustit soubor***
  
     awk -f first_awk.awk soubor.sh 
-
+            
+**Výstup**
+     
     // Vypíše všechny řádky souboru
     awk '{ print }' text.txt
 
