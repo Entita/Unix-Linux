@@ -1097,6 +1097,10 @@ https://kam.mff.cuni.cz/~setnicka/static/unix/AWK.pdf
     ...
             
 **Výstup**
+     
+ ***Jak spoustit soubor***
+ 
+    awk -f first_awk.awk soubor.sh 
 
     // Vypíše všechny řádky souboru
     awk '{ print }' text.txt
