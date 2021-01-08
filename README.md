@@ -6,3 +6,5 @@
   https://mamut.spseol.cz/nozka/psk/
   
   http://outrata.inf.upol.cz/courses/uss/
+  
+  https://likegeeks.com/awk-command/
