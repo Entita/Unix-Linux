@@ -14,3 +14,5 @@
   https://www.thegeekstuff.com/2010/02/awk-conditional-statements/
   
   https://linuxhint.com/conditional_statement_awk_command/
+  
+  https://www.digitalocean.com/community/tutorials/how-to-use-the-awk-language-to-manipulate-text-in-linux
