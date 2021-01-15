@@ -2206,3 +2206,4 @@ echo "čau" | pokus.txt -> vypsání textu do souboru
 
 # Náhodné příklady
 
+bla
