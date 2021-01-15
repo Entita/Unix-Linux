@@ -2201,4 +2201,5 @@ echo "čau"-> vypsání textu na standartní výstup konzole
 echo "čau" | pokus.txt -> vypsání textu do souboru
 
 # Náhodné příklady
+sed -n '/BEGIN/,/END/ p' data3.txt | sed 's/,/./g' | awk '/[0-9]/ {for (i=1;i<5;i++){ x+=$i} {print x > "vysledek.txt"} {x=0}}'
 
